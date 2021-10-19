@@ -1,4 +1,13 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+import BaseContainer from './components/UI/BaseContainer.vue'
+import BaseSearch from './components/UI/BaseSearch.vue'
+
+const app = createApp(App)
+
+
+app.component('base-container', BaseContainer)
+app.component('base-search', BaseSearch)
+app.config.compilerOptions.isCustomElement = tag => tag.startsWith('user-', 'project-')
+app.mount('#app')
